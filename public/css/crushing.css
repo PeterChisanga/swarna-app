@@ -1,0 +1,516 @@
+/*
+ * Additions for the live Crushing app. styles.css is the unchanged mockup stylesheet.
+ * The prototype stepper (top walkthrough bar) is not part of the live app, so the
+ * 52px offsets it needed in styles.css are reset here.
+ */
+[hidden] {
+    display: none !important;
+}
+
+@media (min-width: 601px) {
+    #app-shell {
+        min-height: 100vh;
+    }
+    #sidebar {
+        top: 0;
+        height: 100vh;
+    }
+    #topbar {
+        top: 0;
+    }
+}
+.login-page #screen-login {
+    min-height: 100vh;
+}
+@media (max-width: 600px) {
+    .login-page #screen-login {
+        min-height: 100dvh;
+    }
+}
+
+/* Sign out is a POST form, styled like the mockup's top link */
+.logout-form {
+    display: inline;
+    margin: 0;
+}
+button.top-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+.user-pill .role-tag {
+    margin-left: 4px;
+}
+
+/* Login */
+.login-error {
+    background: var(--red-soft);
+    color: var(--red);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+/* Report stage chips (Open = shift in progress) */
+.status-chip.stage {
+    margin-top: 4px;
+    display: inline-block;
+}
+.status-chip.open {
+    background: var(--steel-soft);
+    color: var(--steel);
+}
+.status-chip.closed {
+    background: var(--line-soft);
+    color: var(--text-dim);
+}
+
+/* Start / End of shift switch */
+#stage-nav {
+    margin-bottom: 16px;
+}
+.stage-count {
+    font-size: 10px;
+    margin-left: 6px;
+    padding: 1px 7px;
+    border-radius: 20px;
+    background: var(--steel-soft);
+    color: var(--steel);
+}
+
+/* Start-of-shift fields shown read-only on the end-of-shift page */
+.readonly-box {
+    grid-column: 1/-1;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    background: var(--line-soft);
+    padding: 12px 14px;
+}
+.readonly-box .rb-title {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+}
+.readonly-box .rb-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 18px;
+    font-size: 12px;
+    color: var(--text-dim);
+}
+.readonly-box .rb-grid b {
+    color: var(--text);
+}
+@media (max-width: 560px) {
+    .readonly-box .rb-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field-warn {
+    background: var(--amber-soft);
+    color: #6c5310;
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    font-size: 11.5px;
+    line-height: 1.5;
+}
+.form-card select:disabled {
+    opacity: 0.6;
+}
+
+/* Admin: dropdown lists */
+.master-add {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.master-add input {
+    flex: 1;
+    min-width: 0;
+    background: var(--graphite);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 7px 10px;
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: 12.5px;
+}
+.admin-table select,
+.edit-grid select,
+.edit-grid textarea {
+    width: 100%;
+    background: var(--graphite);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: 14px;
+}
+.edit-grid .full {
+    grid-column: 1/-1;
+}
+.review-reason {
+    width: 100%;
+    margin-top: 8px;
+    border: 1px solid var(--line);
+    padding: 10px;
+    font: inherit;
+    background: var(--graphite);
+    border-radius: var(--radius);
+}
+
+/* ---------- Live crusher card additions ---------- */
+.crusher-detail {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--text-faint);
+}
+
+.crusher-live {
+    text-align: right;
+    flex: 0 0 auto;
+}
+.crusher-live .live-label {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 10.5px;
+    color: var(--text-faint);
+}
+.live-timer {
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+}
+.crusher-running .live-timer {
+    color: var(--green);
+}
+.crusher-stopped .live-timer {
+    color: var(--red);
+}
+
+.state-dot.running {
+    animation: dotPulse 1.4s ease-in-out infinite;
+}
+@keyframes dotPulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+.crusher-note {
+    margin-bottom: 16px;
+    padding: 9px 12px;
+    border-left: 3px solid var(--red);
+    border-radius: var(--radius);
+    background: var(--red-soft);
+    color: var(--red);
+    font-size: 11.5px;
+    line-height: 1.5;
+}
+
+.crusher-metric small {
+    display: block;
+    margin-top: 4px;
+    font-size: 10.5px;
+    color: var(--text-faint);
+}
+.crusher-metric strong {
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 700px) {
+    .crusher-card-top {
+        flex-direction: column;
+    }
+    .crusher-live {
+        text-align: left;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .state-dot.running {
+        animation: none;
+    }
+}
+
+/* ---------- Production and Lab capture fields ---------- */
+
+.capture-field {
+    min-width: 0;
+}
+
+.capture-field > label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 7px;
+}
+
+.capture-field .field-opt {
+    font-weight: 400;
+}
+
+.capture-control {
+    position: relative;
+}
+
+.capture-field .capture-control input,
+.capture-field .capture-control select,
+.capture-field .capture-control textarea {
+    display: block;
+    width: 100%;
+    min-height: 46px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--panel);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+        border-color 0.18s,
+        box-shadow 0.18s,
+        background 0.18s;
+}
+
+.capture-field .capture-control textarea {
+    min-height: 98px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.capture-field .capture-control :is(input, select, textarea):focus {
+    border-color: var(--steel);
+    box-shadow: 0 0 0 3px var(--steel-soft);
+}
+
+.capture-field .capture-control [aria-invalid="true"] {
+    border-color: var(--red);
+    background: var(--red-soft);
+}
+
+.capture-field .capture-control [aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px var(--red-soft);
+}
+
+.capture-field .capture-control :disabled {
+    background: var(--graphite);
+    color: var(--text-faint);
+    cursor: not-allowed;
+}
+
+.capture-field input[data-kind="number"],
+.capture-field input[data-kind="integer"],
+.capture-field input[type="date"],
+.capture-field input[type="time"] {
+    font-variant-numeric: tabular-nums;
+}
+
+.capture-field .has-unit input {
+    padding-right: 78px;
+}
+
+.capture-unit {
+    position: absolute;
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 7px;
+    border-radius: var(--radius);
+    background: var(--steel-soft);
+    color: var(--steel);
+    font-size: 11px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.capture-help {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.capture-help .field-hint {
+    margin: 0;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--text-faint);
+}
+
+.capture-counter {
+    flex-shrink: 0;
+    color: var(--text-faint);
+    font-size: 10.5px;
+    font-variant-numeric: tabular-nums;
+}
+
+.capture-counter.at-limit {
+    color: var(--amber);
+}
+
+.capture-field .field-error {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+    .capture-field .capture-control :is(input, select, textarea) {
+        font-size: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .capture-field .capture-control :is(input, select, textarea) {
+        transition: none;
+    }
+}
+
+/* ---------- Live banner (Crushing page) ---------- */
+.live-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 20px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--text-faint);
+    border-radius: var(--radius-lg);
+}
+.live-banner.crusher-running {
+    border-left-color: var(--green);
+}
+.live-banner.crusher-stopped {
+    border-left-color: var(--red);
+}
+
+.live-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.live-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+.live-chip {
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--line-soft);
+    color: var(--text-dim);
+    font-size: 10.5px;
+    font-weight: 600;
+}
+.live-chip.ok {
+    background: var(--green-soft);
+    color: var(--green);
+}
+.live-chip.wait {
+    background: var(--amber-soft);
+    color: #6c5310;
+}
+.live-chip.bad {
+    background: var(--red-soft);
+    color: var(--red);
+}
+
+.live-refresh {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    background: var(--amber-soft);
+    color: #6c5310;
+    font-size: 11.5px;
+}
+
+@media (max-width: 700px) {
+    .live-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .live-banner .crusher-live {
+        text-align: left;
+    }
+}
+
+.capture-field .capture-control input[readonly] {
+    background: var(--graphite);
+    color: var(--text-dim);
+    cursor: not-allowed;
+}
+.capture-field .capture-control input[readonly]:focus {
+    border-color: var(--line);
+    box-shadow: none;
+}
+
+/* --------------------home dashboard-------------------- */
+#overview-shift-dialog {
+    width: min(620px, calc(100vw - 32px));
+    max-height: 85vh;
+    margin: auto;
+    padding: 0;
+    overflow-y: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--panel);
+    color: var(--text);
+    box-shadow: 0 20px 60px rgb(0 0 0 / 25%);
+}
+
+#overview-shift-dialog::backdrop {
+    background: rgb(0 0 0 / 50%);
+}
+
+#overview-shift-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    margin: 0;
+}
+
+#overview-shift-details dt,
+#overview-shift-details dd {
+    margin: 0;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    overflow-wrap: anywhere;
+}
+
+#overview-shift-details dt {
+    padding-right: 16px;
+    color: var(--text-faint);
+}
+
+#overview-shift-details dd {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+#overview-shift-notes-wrap {
+    margin-top: 20px;
+}
+
+#overview-shift-notes {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
