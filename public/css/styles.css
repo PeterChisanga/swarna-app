@@ -2010,3 +2010,55 @@ a:focus-visible {
         transition: none;
     }
 }
+
+/* -------------Mobile topbar adjustments for small screens (logout) ------------- */
+@media (max-width: 600px) {
+    #topbar {
+        flex-wrap: wrap;
+    }
+
+    #topbar .top-actions {
+        display: flex;
+        flex-basis: 100%;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 0;
+        gap: 12px;
+    }
+
+    #topbar .logout-form {
+        display: block;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    #topbar .top-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 6px 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    #topbar .user-pill {
+        display: flex;
+        min-width: 0;
+        font-size: 12px;
+    }
+
+    #topbar .user-pill .av {
+        flex-shrink: 0;
+        font-size: 11px;
+    }
+
+    #topbar .user-pill > span:last-child {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    #topbar .user-pill .role-tag {
+        display: inline-block;
+        font-size: 10px;
+    }
+}

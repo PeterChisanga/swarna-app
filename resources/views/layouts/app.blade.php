@@ -48,9 +48,8 @@
 
       <div id="main">
         <header id="topbar">
-          <button type="button" class="mobile-menu" id="mobile-menu" aria-label="Open sections" aria-expanded="false">☰</button>
 
-          @isset($date)
+          {{-- @isset($date)
             <div class="filt">
               <label for="global-date">Operating date</label>
               <input id="global-date" type="date" value="{{ $date }}" />
@@ -64,9 +63,11 @@
                 @endforeach
               </select>
             </div>
-          @endisset
+          @endisset --}}
 
           <div class="top-actions">
+          <button type="button" class="mobile-menu" id="mobile-menu" aria-label="Open sections" aria-expanded="false">☰</button>
+
             <form method="POST" action="{{ route('logout') }}" class="logout-form">
               @csrf
               <button type="submit" class="top-link">Sign out</button>
